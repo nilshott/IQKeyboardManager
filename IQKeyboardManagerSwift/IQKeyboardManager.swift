@@ -351,7 +351,6 @@ Codeless drop-in universal library allows to prevent issues of keyboard sliding 
 
             var originalKeyWindow: UIWindow?
 
-            #if swift(>=5.1)
             if #available(iOS 13, *) {
                 originalKeyWindow = UIApplication.shared.connectedScenes
                     .compactMap { $0 as? UIWindowScene }
@@ -360,9 +359,6 @@ Codeless drop-in universal library allows to prevent issues of keyboard sliding 
             } else {
                 originalKeyWindow = UIApplication.shared.keyWindow
             }
-            #else
-            originalKeyWindow = UIApplication.shared.keyWindow
-            #endif
 
             //If original key window is not nil and the cached keywindow is also not original keywindow then changing keywindow.
             if let originalKeyWindow = originalKeyWindow {
